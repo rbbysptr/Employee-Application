@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Employee</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>My Employee</h1>
+            <br>
+            <a class="btn btn-warning" href="/employees/add" style="color: white;">Add Employees</a>
+            <form class="text-end">
+                <div>
+                    <p>
+                        Sorting By : 
+                        <button class="btn bg-white text-info border border-info" name="sort" value="asc">Name</button>
+                        <button class="btn bg-white text-info border border-info" name="sort" value="desc">Position</button>
+                        &nbsp;&nbsp;
+                        <select name="order">
+                        <option value="" selected disabled>Filter by Degree</option>
+                        <option value="BachelorDegree">Bachelor Degree</option>
+                        <option value="MasterDegree">Master Degree</option>
+                    </select>
+                    <button type="submit" class="btn btn-info" style="color:white; width: 150px;" >Filter</button>
+                    </p> 
+                </div>
+                
+            </div>
+    
+        </form>
+        <br><br>
+        <section>
+            <div class="row">
+                <% data.forEach(element => { %>
+                 <div class="col-md-4">
+                    <div class="card">
+                        <img src="<%= element.profile_picture %>" alt="profile_picture" style="width:100%; height: 300px;object-fit: cover;" oneerror="this.onerror=null;" onerror="this.onerror=null; this.src='https://www.its.ac.id/international/wp-content/uploads/sites/66/2020/02/blank-profile-picture-973460_1280.jpg';" >
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= element.name %></h5>
+                        <p class="card-title">Position: <%= element.position %></p>
+                        <p class="card-title">Age: <%= element.age %></p>
+                        <p class="card-title">Education: <%= element.education %></p>
+                        <p class="card-title">Email: <%= element.email %></p>
+                        <p class="card-title">Phone Number: <%= element.phone_number %></p>
+                        <a href="/employees/edit/<%= element.id %>" class="btn bg-white text-warning border border-warning">Edit</a>
+                        <a href="/employees/delete/<%= element.id %>" class="btn bgt-white text-danger border-danger">Delete</a>
+                    </div>
+                 </div>
+                <% }) %>
+            </div>
+        </section>
+        <%- include('layout/bootstrap') %>
+    </div>
+</body>
+</html>

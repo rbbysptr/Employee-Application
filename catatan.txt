@@ -1,0 +1,1 @@
+npx sequelize-cli model:generate --name Employee --attributes name:string,position:string,education:string,email:string,phone_number:string,profile_picture:string
